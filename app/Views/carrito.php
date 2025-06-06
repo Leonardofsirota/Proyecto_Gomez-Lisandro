@@ -17,26 +17,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cart->contents() as $item): ?>
-                    <tr>
-                        <td><?= esc($item['name']) ?></td>
-                        <td colspan="1"><strong>$<?= number_format($cart->total(), 2, ',', '.') ?></strong></td>
-                        <td>
-                            <form action="<?= site_url('carrito/actualizar') ?>" method="post" class="d-inline">
-                                <input type="hidden" name="rowid" value="<?= esc($item['rowid']) ?>">
-                                <input type="number" name="qty" value="<?= esc($item['qty']) ?>" min="1" style="width:60px;">
-                                <button type="submit" class="btn btn-sm btn-primary ms-1">Actualizar</button>
-                            </form>
-                        </td>
-                        <td>$<?= number_format($item['subtotal'], 2, ',', '.') ?></td>
-                        <td>
-                            <form action="<?= site_url('carrito/eliminar') ?>" method="post" class="d-inline">
-                                <input type="hidden" name="rowid" value="<?= esc($item['rowid']) ?>">
-                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+               <?php foreach ($cart->contents() as $item): ?>
+    <tr>
+        <td><?= esc($item['name']) ?></td>
+        <td><strong>$<?= number_format($item['price'], 2, ',', '.') ?></strong></td>
+        <td>
+            <form action="<?= site_url('carrito/actualizar') ?>" method="post" class="d-inline">
+                <input type="hidden" name="rowid" value="<?= esc($item['rowid']) ?>">
+                <input type="number" name="qty" value="<?= esc($item['qty']) ?>" min="1" style="width:60px;">
+                <button type="submit" class="btn btn-sm btn-primary ms-1">Actualizar</button>
+            </form>
+        </td>
+        <td>$<?= number_format($item['subtotal'], 2, ',', '.') ?></td>
+        <td>
+            <form action="<?= site_url('carrito/eliminar') ?>" method="post" class="d-inline">
+                <input type="hidden" name="rowid" value="<?= esc($item['rowid']) ?>">
+                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+<?php endforeach; ?>
+
             </tbody>
             <tfoot class="table-light">
                 <tr>

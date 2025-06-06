@@ -9,7 +9,6 @@
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th>Imagen</th>
                         <th>Producto</th>
                         <th>Precio Unitario</th>
                         <th>Cantidad</th>
@@ -19,7 +18,6 @@
                 <tbody>
                     <?php foreach ($detalles as $item): ?>
                         <tr>
-                            <td>imagen</td>
                             <td><?= esc($item['nombre_producto']) ?></td>
                             <td>$<?= number_format($item['precio'], 2, ',', '.') ?></td>
                             <td><?= esc($item['cantidad']) ?></td>
@@ -29,7 +27,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                        <td colspan="3" class="text-end"><strong>Total:</strong></td>
                         <td><strong>$<?= number_format($total_venta, 2, ',', '.') ?></strong></td>
                     </tr>
                 </tfoot>
