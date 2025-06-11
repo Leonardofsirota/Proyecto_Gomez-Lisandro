@@ -32,8 +32,6 @@ $routes->set404Override();
 $routes->get('/', 'Home::index'); /* controlador-->funcion */
 $routes->get('/index', 'Home::index');
 $routes->get('/quienesSomos', 'Home::quienesSomos');
-$routes->get('/contacto', 'Home::contacto');
-//$routes->get('/productos', 'Home::productos');
 $routes->get('/terminosdeuso', 'Home::terminosdeuso');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
@@ -52,7 +50,17 @@ $routes->get('/logout', 'login_controller::logout');
 // ---------- CATÁLOGO ----------
 $routes->get('productos', 'ProductoController::index');          // Muestra los productos
 
-
+// ---------- TABLA DE PRODUCTOS Y CRUD ----------
+$routes->get('productos/tabla', 'ProductoController::tabla'); // Tabla de productos activos
+$routes->get('productos/agregar', 'ProductoController::agregar'); // Formulario alta
+$routes->post('productos/guardar', 'ProductoController::guardar'); // Guardar producto
+$routes->post('producto/guardar', 'ProductoController::guardar'); // Guardar producto (singular)
+$routes->get('productos/editar/(:num)', 'ProductoController::editar/$1'); // Formulario edición
+$routes->post('productos/actualizar/(:num)', 'ProductoController::actualizar/$1'); // Actualizar producto
+$routes->get('productos/borrar/(:num)', 'ProductoController::borrar/$1'); // Borrado lógico
+$routes->get('productos/eliminados', 'ProductoController::eliminados'); // Listar eliminados
+$routes->get('productos/activar/(:num)', 'ProductoController::activar/$1'); // Activar producto eliminado
+$routes->get('tabla_productos', 'ProductoController::tabla'); // Mostrar tabla_productos.php
 
 // ---------- CARRITO ----------
 $routes->get('carrito/ver', 'Carrito::ver');                 // Ver carrito
@@ -64,6 +72,12 @@ $routes->post('carrito/comprar', 'Carrito::comprar');        // Finalizar compra
 // ---------- HISTORIAL DE COMPRAS ----------
 $routes->get('compras', 'Carrito::misCompras');  // Mostrar historial de compras
 $routes->get('carrito/detalle-compra/(:num)', 'Carrito::detalleCompra/$1');  // Ver detalle de una compra
+
+
+$routes->get('/contacto', 'ConsultasController::index');
+$routes->get('/consultas/crear', 'ConsultasController::crear');
+$routes->post('/consultas/guardar', 'ConsultasController::guardar');
+$routes->get('/consultas/visto/(:num)', 'Consultas::marcarComoVisto/$1');
 
 
 

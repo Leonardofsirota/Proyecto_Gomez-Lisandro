@@ -5,8 +5,16 @@
 <div class="container text-center">
     <h1 class="mb-4">Carrito Compras</h1>
 
+    <?php if (session('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= esc(session('error')) ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
     <?php if ($cart->totalItems() > 0): ?>
-        <table class="table table-bordered table-striped mx-auto" style="max-width: 900px;">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped mx-auto align-middle" style="max-width: 900px;">
             <thead class="table-dark">
                 <tr>
                     <th>Producto</th>
@@ -37,7 +45,6 @@
         </td>
     </tr>
 <?php endforeach; ?>
-
             </tbody>
             <tfoot class="table-light">
                 <tr>
@@ -46,6 +53,7 @@
                 </tr>
             </tfoot>
         </table>
+    </div>
         <form action="<?= site_url('carrito/comprar') ?>" method="post" class="mt-3">
             <button type="submit" class="btn btn-success">Comprar</button>
         </form>

@@ -28,30 +28,26 @@ foreach ($carrito as $item) {
           <a class="nav-link me-3 custom-link" href="<?= base_url('index') ?>">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-3" href="<?= base_url('productos') ?>">Productos</a>
+          <a class="nav-link me-3" href="<?= base_url('') ?>">CRUD Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-3" href="<?= base_url('comercializacion') ?>">Comercialización</a>
+          <a class="nav-link me-3" href="<?= base_url('tabla_productos') ?>">CRUD Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-3" href="<?= base_url('login') ?>">Ingreso</a>
+          <a class="nav-link me-3" href="<?= base_url('') ?>">Muestra Ventas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link me-3" href="<?= base_url('logout') ?>">Cerrar Sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link custom-link" href="<?= base_url('terminosdeuso') ?>">Términos de Uso</a>
         </li>
       </ul>
     </div>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="<?= base_url('index') ?>">Inicio</a>
-      <a class="dropdown-item" href="<?= base_url('productos') ?>">Productos</a>
-      <a class="dropdown-item" href="<?= base_url('comercializacion') ?>">Comercialización</a>
-      <a class="dropdown-item" href="<?= base_url('login') ?>">Ingreso</a>
+      <a class="dropdown-item" href="<?= base_url('') ?>">CRUD Usuarios</a>
+      <a class="dropdown-item" href="<?= base_url('tabla_productos') ?>">CRUD Productos</a>
+      <a class="dropdown-item" href="<?= base_url('') ?>">Muestra Ventas</a>
       <a class="dropdown-item" href="<?= base_url('logout') ?>">Cerrar Sesión</a>
-      <a class="dropdown-item" href="<?= base_url('terminosdeuso') ?>">Términos de Uso</a>
     </div>
 
   <?php elseif($perfil == 2): ?>
@@ -92,7 +88,8 @@ foreach ($carrito as $item) {
       <a class="dropdown-item" href="<?= base_url('index') ?>">Inicio</a>
       <a class="dropdown-item" href="<?= base_url('productos') ?>">Productos</a>
       <a class="dropdown-item" href="<?= base_url('comercializacion') ?>">Comercialización</a>
-      <a class="dropdown-item" href="<?= base_url('carrito/ver') ?>">Carrito (<?= $totalCantidad ?>)</a>
+      <a class="dropdown-item" href="<?= base_url('carrito/ver') ?>">Carrito</a>
+      <a class="dropdown-item" href="<?= base_url('compras') ?>">Mis Compras</a>
       <a class="dropdown-item" href="<?= base_url('logout') ?>">Cerrar Sesión</a>
       <a class="dropdown-item" href="<?= base_url('terminosdeuso') ?>">Términos de Uso</a>
     </div>

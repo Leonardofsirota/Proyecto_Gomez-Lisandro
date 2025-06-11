@@ -5,6 +5,9 @@
     <h1>Detalle de Compra</h1>
 
     <?php if (!empty($detalles)): ?>
+        <div class="mb-3 text-end">
+            <span class="badge bg-info">Fecha: <?= isset($detalles[0]['fecha']) ? esc(date('d/m/Y H:i', strtotime($detalles[0]['fecha']))) : '' ?></span>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
@@ -39,5 +42,4 @@
 
     <a href="<?= site_url('compras') ?>" class="btn btn-secondary mt-3">Volver al historial</a>
 </div>
-
 <?= $this->endSection() ?>

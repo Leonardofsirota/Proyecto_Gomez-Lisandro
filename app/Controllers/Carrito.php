@@ -94,15 +94,38 @@ public function comprar()
         $ventaId = $cabeceraModel->getInsertID();
     }
 
+    // Validar stock antes de procesar la compra
     foreach ($items as $item) {
-        $detalleModel->insert([
+        $producto = $this->productoModel->find($item['id']);
+        $cantidad = isset($item['qty']) ? (int)$item['qty'] : 1;
+        if (!$producto || !isset($producto['stock']) || $producto['stock'] < $cantidad || $producto['stock'] <= 0) {
+            // Si no hay stock suficiente, redirigir con mensaje de error
+            return redirect()->to(site_url('carrito/ver'))
+                ->with('error', 'No hay stock suficiente para el producto: ' . ($producto['nombre_prod'] ?? 'Desconocido'));
+        }
+    }
+
+    foreach ($items as $item) {
+        // Registrar detalle de venta
+        $detalle = [
             'ventas_id'   => $ventaId,
             'producto_id' => $item['id'],
             'cantidad'    => $item['qty'],
             'precio'      => $item['price']
-        ]);
+        ];
+        $detalleModel->insert($detalle);
+
+        // Obtener producto actual
+        $producto = $this->productoModel->find($item['id']);
+
+        // Actualizar stock si el producto existe
+        if ($producto && isset($producto['stock'])) {
+            $nuevoStock = $producto['stock'] - $item['qty'];
+            $this->productoModel->update($item['id'], ['stock' => $nuevoStock]);
+        }
     }
 
+    // Vaciar el carrito
     $cart->destroy();
 
     // Traer detalle compra nueva
@@ -142,8 +165,9 @@ public function detalleCompra($id)
     $builder = $db->table('ventas_detalle');
 
     $detalles = $builder
-        ->select('ventas_detalle.*, productos.nombre_prod AS nombre_producto')
+        ->select('ventas_detalle.*, productos.nombre_prod AS nombre_producto, ventas_cabecera.fecha')
         ->join('productos', 'productos.id_producto = ventas_detalle.producto_id')
+        ->join('ventas_cabecera', 'ventas_cabecera.id = ventas_detalle.ventas_id')
         ->where('ventas_id', $id)
         ->get()
         ->getResultArray();

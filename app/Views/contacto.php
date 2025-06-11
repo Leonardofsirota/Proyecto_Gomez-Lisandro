@@ -1,3 +1,6 @@
+<?= $this->extend('layouts/template') ?>
+<?= $this->section('contenido') ?>
+
 
 <section id="contacto" class="container-fluid d-flex flex-column min-vh-100">
     
@@ -67,37 +70,38 @@
             <h2 style="text-align: center;"> ENVIANOS TU CONSULTA </h2>
         </div>
 
-        <div class="container form-container">
-            <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
-                </div>
-                <div class="form-group">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu e-mail">
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono">
-                </div>
-                <div class="form-group">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea class="form-control" id="mensaje" rows="3" placeholder="Escribe tu mensaje aquí" maxlength="1000"></textarea>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-                <button type="reset" class="btn btn-secondary">Restablecer</button>
-            </form>
+
+<div class="container form-container">
+    <form method="post" action="<?= base_url('consultas/guardar') ?>">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingresa tu apellido">
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu e-mail">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" class="form-control" id="telefono" name="numero" placeholder="Ingresa tu teléfono">
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="pregunta" rows="3" placeholder="Escribe tu mensaje aquí" maxlength="1000"></textarea>
         </div>
         <br>
-    </div>
-    
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="reset" class="btn btn-secondary">Restablecer</button>
+    </form>
+</div>
 
-    
-    
+        <br>
+    </div>
+
 </section>
+
+<?= $this->endSection() ?>

@@ -16,8 +16,9 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><?= esc($producto['nombre_prod']) ?></h5>
                         <p class="card-text">Precio: $<?= number_format($producto['precio_vta'], 2, ',', '.') ?></p>
-
-                        <?php if (session()->has('id_usuario')): ?>
+                        <?php if ($producto['stock'] <= 0): ?>
+                            <span class="btn btn-secondary w-100 disabled">Sin stock</span>
+                        <?php elseif (session()->has('id_usuario')): ?>
                             <form action="<?= site_url('carrito/agregar') ?>" method="post" class="mt-auto">
                                 <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
                                 <input type="hidden" name="qty" value="1">
