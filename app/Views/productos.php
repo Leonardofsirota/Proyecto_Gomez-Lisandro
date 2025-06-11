@@ -4,6 +4,23 @@
 
 <h1 class="mb-4 text-center">Catálogo de Productos</h1>
 
+<!-- Apartado de categorías -->
+<div class="mb-4 d-flex justify-content-center">
+    <form method="get" action="<?= site_url('productos') ?>" class="d-flex align-items-center gap-2">
+        <label for="categoria_id" class="me-2 fw-bold">Filtrar por categoría:</label>
+        <select name="categoria_id" id="categoria_id" class="form-select" style="width: 200px;">
+            <option value="">Todas</option>
+            <?php if (!empty($categorias)): ?>
+                <?php foreach ($categorias as $cat): ?>
+                    <option value="<?= esc($cat['id_categoria']) ?>" <?= isset($categoria_id) && $categoria_id == $cat['id_categoria'] ? 'selected' : '' ?>>
+                        <?= esc($cat['descripcion']) ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </select>
+        <button type="submit" class="btn btn-outline-primary ms-2">Filtrar</button>
+    </form>
+</div>
 
 <?php if (!empty($productos) && is_array($productos)): ?>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -15,6 +32,10 @@
                     <?php endif; ?>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><?= esc($producto['nombre_prod']) ?></h5>
+                        <!-- Mostrar nombre de la categoría -->
+                        <?php if (!empty($producto['nombre_cat'])): ?>
+                            <span class="badge bg-info mb-2">Categoría: <?= esc($producto['nombre_cat']) ?></span>
+                        <?php endif; ?>
                         <p class="card-text">Precio: $<?= number_format($producto['precio_vta'], 2, ',', '.') ?></p>
                         <?php if ($producto['stock'] <= 0): ?>
                             <span class="btn btn-secondary w-100 disabled">Sin stock</span>

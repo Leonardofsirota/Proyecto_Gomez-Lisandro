@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\producto_Model;
-use App\Models\ProductoModel;
 use CodeIgniter\Controller;
 
 class ProductoController extends BaseController
@@ -17,13 +16,27 @@ class ProductoController extends BaseController
         $this->cart = \Config\Services::cart();
     }
 
-    // Mostrar catálogo de productos
-    public function index()
+    // Mostrar catálogo de productos por categoría
+    public function index($categoria_id = null)
     {
-        $productos = $this->productoModel->findAll();
-
+        $categoriaModel = new \App\Models\categoria_Model();
+        $categorias = $categoriaModel->where('activo', 1)->findAll();
+        $request = \Config\Services::request();
+        // Si viene por GET, tomar el filtro de la URL
+        $categoria_id = $request->getGet('categoria_id') ?? $categoria_id;
+        $db = \Config\Database::connect();
+        $builder = $db->table('productos');
+        $builder->select('productos.*, categorias.descripcion AS nombre_cat');
+        $builder->join('categorias', 'categorias.id_categoria = productos.categoria_id', 'left');
+        $builder->where('productos.eliminado', 'no');
+        if ($categoria_id) {
+            $builder->where('productos.categoria_id', $categoria_id);
+        }
+        $productos = $builder->get()->getResultArray();
         return view('productos', [
             'productos' => $productos,
+            'categorias' => $categorias,
+            'categoria_id' => $categoria_id,
             'cart' => $this->cart
         ]);
     }
@@ -106,7 +119,7 @@ class ProductoController extends BaseController
     // Listar productos eliminados
     public function eliminados()
     {
-        $eliminados = $this->productoModel->where('eliminado', 'si')->findAll();
+        $eliminados = $this->productoModel->where('eliminado', 'SI')->findAll();
         return view('productos_eliminados', ['eliminados' => $eliminados]);
     }
 

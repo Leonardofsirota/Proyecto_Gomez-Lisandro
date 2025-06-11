@@ -523,3 +523,84 @@ INFO - 2025-06-11 06:51:27 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-06-11 06:51:27 --> Cart Class Initialized
 INFO - 2025-06-11 06:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-06-11 06:51:30 --> Cart Class Initialized
+INFO - 2025-06-11 06:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 06:57:04 --> Cart Class Initialized
+INFO - 2025-06-11 06:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 06:59:48 --> Cart Class Initialized
+INFO - 2025-06-11 07:00:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:00:17 --> Cart Class Initialized
+INFO - 2025-06-11 07:00:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:00:20 --> Cart Class Initialized
+INFO - 2025-06-11 07:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:01:10 --> Cart Class Initialized
+INFO - 2025-06-11 07:04:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:04:03 --> Cart Class Initialized
+INFO - 2025-06-11 07:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:04:23 --> Cart Class Initialized
+INFO - 2025-06-11 07:07:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:07:54 --> Cart Class Initialized
+CRITICAL - 2025-06-11 07:07:54 --> Undefined array key "nombre_cat"
+in APPPATH\Views\productos.php on line 16.
+ 1 APPPATH\Views\productos.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre_cat"', 'APPPATH\\Views\\productos.php', 16)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\productos.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('productos', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(30): view('productos', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProductoController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-11 07:09:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:09:36 --> Cart Class Initialized
+ERROR - 2025-06-11 07:09:36 --> mysqli_sql_exception: Unknown column 'categorias.nombre_cat' in 'field list' in C:\xampp\htdocs\proyecto_fleitas_gomez\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_fleitas_gomez\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `product...', 0)
+#1 C:\xampp\htdocs\proyecto_fleitas_gomez\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `product...')
+#2 C:\xampp\htdocs\proyecto_fleitas_gomez\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `product...')
+#3 C:\xampp\htdocs\proyecto_fleitas_gomez\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `product...', Array, false)
+#4 C:\xampp\htdocs\proyecto_fleitas_gomez\app\Controllers\ProductoController.php(33): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_fleitas_gomez\system\CodeIgniter.php(934): App\Controllers\ProductoController->index()
+#6 C:\xampp\htdocs\proyecto_fleitas_gomez\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+#7 C:\xampp\htdocs\proyecto_fleitas_gomez\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\proyecto_fleitas_gomez\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2025-06-11 07:09:36 --> Unknown column 'categorias.nombre_cat' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `productos`.*, `categorias`.`nombre_cat`
+FROM `productos`
+LEFT JOIN `categorias` ON `categorias`.`id_categoria` = `productos`.`categoria_id`
+WHERE `productos`.`eliminado` = :productos.eliminado:', [...], false)
+ 2 APPPATH\Controllers\ProductoController.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProductoController->index()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-11 07:13:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:13:54 --> Cart Class Initialized
+CRITICAL - 2025-06-11 07:13:54 --> Undefined array key "nombre_cat"
+in APPPATH\Views\productos.php on line 16.
+ 1 APPPATH\Views\productos.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre_cat"', 'APPPATH\\Views\\productos.php', 16)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\productos.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('productos', [], true)
+ 5 APPPATH\Controllers\ProductoController.php(33): view('productos', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProductoController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductoController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-11 07:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:14:22 --> Cart Class Initialized
+INFO - 2025-06-11 07:14:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:14:37 --> Cart Class Initialized
+INFO - 2025-06-11 07:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:14:41 --> Cart Class Initialized
+INFO - 2025-06-11 07:14:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:14:48 --> Cart Class Initialized
+INFO - 2025-06-11 07:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:16:27 --> Cart Class Initialized
+INFO - 2025-06-11 07:16:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:16:33 --> Cart Class Initialized
+INFO - 2025-06-11 07:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:16:39 --> Cart Class Initialized
+INFO - 2025-06-11 07:16:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 07:16:59 --> Cart Class Initialized
